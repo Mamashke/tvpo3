@@ -50,6 +50,5 @@ def test_total_payment_and_overpayment_consistency() -> None:
 
 def test_overpayment_raises_when_total_less_than_principal() -> None:
     """Если общая выплата меньше суммы кредита, должна быть ошибка."""
-    """bebra"""
     with pytest.raises(ValueError):
         calculate_overpayment(100_000, 50_000)
