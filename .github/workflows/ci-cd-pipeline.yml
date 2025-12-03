@@ -48,12 +48,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    # Шаг 2: Сборка Docker-образа
-    - name: Build Docker image
-      run: |
-        docker build -t mortgage-calculator .
 
-    # Шаг 3: Деплой на сервер через SSH
+    # Шаг 2: Деплой на сервер через SSH
     - name: Deploy to server
       uses: appleboy/ssh-action@v0.1.0
       with:
