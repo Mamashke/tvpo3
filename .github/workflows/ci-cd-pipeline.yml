@@ -55,5 +55,5 @@ jobs:
         cd /opt/mortgage-calculator
         git pull origin main
         docker build -t mortgage-calculator .
-        docker stop mortgage-calculator || true
+        docker stop mortgage-calculator; true
         docker run -d --rm --name mortgage-calculator mortgage-calculator
