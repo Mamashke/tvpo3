@@ -50,16 +50,10 @@ jobs:
 
 
     # Шаг 2: Деплой на сервер через SSH
-    - name: Deploy to server
-      uses: appleboy/ssh-action@v0.1.0
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USER }}
-        key: ${{ secrets.SSH_KEY }}
-        port: 22
-        script: |
-          cd /opt/mortgage-calculator
-          git pull origin main
-          docker build -t mortgage-calculator .
-          docker stop mortgage-calculator || true
-          docker run -d --rm --name mortgage-calculator mortgage-calculator
+    - name: Build and run docker on prod server
+      run: |
+        cd /opt/mortgage-calculator
+        git pull origin main
+        docker build -t mortgage-calculator .
+        docker stop mortgage-calculator || true
+        docker run -d --rm --name mortgage-calculator mortgage-calculator
